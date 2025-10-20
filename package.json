@@ -1,0 +1,40 @@
+{
+  "name": "easy-trans",
+  "displayName": "EasyTrans - OCR翻译",
+  "version": "1.0.0",
+  "description": "Chrome扩展，支持截图OCR和中英文翻译",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --mode development --watch && node scripts/build-post.js",
+    "build": "vite build && copyfiles public/manifest.json dist && node scripts/build-post.js",
+    "preview": "vite preview",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --ext ts,tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,scss,md}\"",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "tesseract.js": "^5.0.4",
+    "eventemitter3": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.246",
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "crx": "^5.0.1",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.1.0",
+    "sass": "^1.69.5",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.0",
+    "copyfiles": "^2.4.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.10.0"
+}
