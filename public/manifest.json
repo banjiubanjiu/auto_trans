@@ -1,46 +1,83 @@
 {
   "manifest_version": 3,
   "name": "EasyTrans - OCR翻译",
+  "short_name": "EasyTrans",
   "version": "1.0.0",
-  "description": "Chrome扩展，支持截图OCR和中英文翻译",
+  "description": "智能OCR翻译工具，支持截图识别和中英文互译",
+  "author": "EasyTrans Team",
+  "homepage_url": "https://github.com/easytrans/chrome-extension",
+
   "permissions": [
     "activeTab",
     "tabs",
     "scripting",
     "storage"
   ],
+
   "host_permissions": [
-    "https://api.moonshot.cn/*"
+    "https://api.moonshot.cn/*",
+    "https://*/*",
+    "http://*/*"
   ],
+
   "background": {
-    "service_worker": "background/index.ts",
+    "service_worker": "background/index.js",
     "type": "module"
   },
+
   "content_scripts": [
     {
       "matches": [
         "<all_urls>"
       ],
       "js": [
-        "content/index.ts"
+        "content/index.js"
       ],
-      "css": []
+      "css": [],
+      "run_at": "document_idle",
+      "all_frames": false
     }
   ],
+
   "action": {
     "default_popup": "popup/index.html",
-    "default_title": "EasyTrans"
+    "default_title": "EasyTrans - 智能OCR翻译",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
   },
+
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",
     "48": "icons/icon-48.png",
     "128": "icons/icon-128.png"
   },
+
+  "commands": {
+    "capture-area": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E"
+      },
+      "description": "选择区域进行OCR翻译"
+    }
+  },
+
   "web_accessible_resources": [
     {
-      "resources": [],
+      "resources": [
+        "assets/*",
+        "icons/*"
+      ],
       "matches": ["<all_urls>"]
     }
-  ]
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }

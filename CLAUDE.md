@@ -50,23 +50,30 @@ Expected commands for development:
 
 ```bash
 # Install dependencies
-pnpm install
+pnpm install  # Or npm install
 
 # Development build with hot reload
-pnpm dev
+pnpm dev  # Or npm run dev
 
 # Production build
-pnpm build
+pnpm build  # Or npm run build
 
 # Run tests
-pnpm test
+pnpm test  # Or npm run test
 
 # Lint code
-pnpm lint
+pnpm lint  # Or npm run lint
 
 # Format code
-pnpm format
+pnpm format  # Or npm run format
 ```
+
+## Important Notes for Claude
+
+**DO NOT EXECUTE INSTALL OR BUILD COMMANDS**
+- Never run `pnpm install`, `npm install`, `pnpm build`, or `npm run build`
+- These commands should be executed manually by the user
+- Only write code and configuration files
 
 ## Architecture Highlights
 
