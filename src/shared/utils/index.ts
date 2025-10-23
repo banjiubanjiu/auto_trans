@@ -6,3 +6,5 @@ export const sleep = (ms: number): Promise<void> => {
 export const formatDate = (date: Date): string => {
   return date.toLocaleString('zh-CN');
 };
+
+export * from './historyStorage';
