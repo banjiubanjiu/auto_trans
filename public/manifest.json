@@ -60,10 +60,9 @@
   "commands": {
     "capture-area": {
       "suggested_key": {
-        "default": "Ctrl+Shift+E",
-        "mac": "Command+Shift+E"
+        "default": "Shift+S"
       },
-      "description": "选择区域进行OCR翻译"
+      "description": "启动截图模式并选择区域进行OCR翻译"
     }
   },
 

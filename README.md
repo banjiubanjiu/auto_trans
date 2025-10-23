@@ -58,10 +58,16 @@ pnpm type-check
 
 ## 使用方法
 
-1. 在网页上按住 Shift 键
-2. 拖拽鼠标选择要翻译的区域
-3. 松开鼠标自动进行OCR和翻译
+1. 在网页上按下 `Shift + S` 启动截图模式
+2. 拖拽鼠标绘制截图选区，可使用边角控制点微调
+3. 点击“完成”提交选区，内容脚本会请求后台进行截图与OCR
 4. 查看悬浮窗口中的翻译结果
+
+## 开发说明
+
+- 全局快捷键：内容脚本监听 `Shift + S`（可在 `ScreenshotController` 中调整），Manifest `commands` 同步声明，方便在扩展快捷键设置页自定义。
+- 截图流程：内容脚本通过 `chrome.runtime.sendMessage` 发送 `screenshot:request`，后台脚本在 `src/background/screenshot.ts` 内调用 `chrome.tabs.captureVisibleTab` 截取并裁剪可见区域，再返回 `screenshot:result`。
+- 截图 UI：位于 `src/content/screenshot/overlay.ts`，使用原生 DOM/CSS 绘制遮罩层与选区，进入截图模式时会阻止页面滚动并在退出时清理事件。
 
 ## License
 
